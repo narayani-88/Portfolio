@@ -1,0 +1,484 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    background: #F5E6D3;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 80px;
+}
+
+/* Header Styles */
+header {
+    background: #F5E6D3;
+    padding: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+.logo {
+    height: 50px;
+    vertical-align: middle;
+}
+
+nav {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    margin-top: 0;
+    border: none;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+    padding: 8px 18px;
+    border-radius: 20px;
+}
+
+nav a:hover {
+    background: #333;
+    color: #F5E6D3;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    min-height: 80vh;
+    background: #F5E6D3;
+}
+
+.hero-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    background: #F5E6D3;
+}
+
+.hero-content {
+    max-width: 500px;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.hero-content p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.hero-right {
+    flex: 1;
+    background: #E8D5B5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hero-accent {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #333;
+    z-index: 2;
+    background: rgba(245, 230, 211, 0.9);
+    padding: 20px 15px;
+    border-radius: 10px;
+}
+
+.heart {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.accent-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+/* About Collage Section */
+.about-collage {
+    display: flex;
+    min-height: 70vh;
+}
+
+.collage-left {
+    flex: 0 0 200px;
+    background: #F5E6D3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.vertical-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.collage-center {
+    flex: 1;
+    background: #fff;
+    padding: 60px 40px;
+    display: flex;
+    align-items: center;
+}
+
+.content-block {
+    max-width: 600px;
+}
+
+.content-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+}
+
+.content-block h3:first-child {
+    margin-top: 0;
+}
+
+.content-block p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.collage-right {
+    flex: 0 0 250px;
+    background: #FF6B6B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 30px;
+}
+
+.accent-block {
+    color: #fff;
+    text-align: center;
+}
+
+.accent-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+.accent-block ul {
+    list-style: none;
+    text-align: left;
+}
+
+.accent-block li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.accent-block li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Team Section */
+.team-section {
+    display: flex;
+    min-height: 60vh;
+}
+
+.team-left {
+    flex: 1;
+    background: #E8D5B5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.team-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-right {
+    flex: 1;
+    background: #9B6B9B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+}
+
+.team-content {
+    color: #fff;
+    max-width: 500px;
+}
+
+.team-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.team-content p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.team-list {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.team-member h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.team-member p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* Button Styles */
+.btn {
+    background: #1a2332;
+    color: #fff;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    background: #2d3a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+    background: #E8D5B5;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .vertical-title {
+        font-size: 2.5rem;
+    }
+    
+    .collage-left {
+        flex: 0 0 150px;
+    }
+    
+    .collage-right {
+        flex: 0 0 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+    
+    .hero-left {
+        padding: 40px 20px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .about-collage {
+        flex-direction: column;
+    }
+    
+    .collage-left {
+        flex: none;
+        padding: 20px;
+    }
+    
+    .vertical-title {
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: 2rem;
+    }
+    
+    .collage-center {
+        padding: 40px 20px;
+    }
+    
+    .collage-right {
+        flex: none;
+        padding: 30px 20px;
+    }
+    
+    .team-section {
+        flex-direction: column;
+    }
+    
+    .team-right {
+        padding: 40px 20px;
+    }
+    
+    .team-content h2 {
+        font-size: 2rem;
+    }
+    
+    .team-list {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .content-block h3 {
+        font-size: 1.5rem;
+    }
+    
+    .content-block p {
+        font-size: 1rem;
+    }
+    
+    .team-content h2 {
+        font-size: 1.8rem;
+    }
+} 

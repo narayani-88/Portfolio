@@ -1,0 +1,534 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    background: #F5E6D3;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 80px;
+}
+
+/* Header Styles */
+header {
+    background: #F5E6D3;
+    padding: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+.logo {
+    height: 50px;
+    vertical-align: middle;
+}
+
+nav {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    margin-top: 0;
+    border: none;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+    padding: 8px 18px;
+    border-radius: 20px;
+}
+
+nav a:hover {
+    background: #333;
+    color: #F5E6D3;
+}
+
+/* Refer Hero Section */
+.refer-hero {
+    background: #F5E6D3;
+    padding: 80px 0;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+}
+
+.refer-hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1400px;
+}
+
+/* Left Side - Image */
+.refer-left {
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.refer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Offer Circles */
+.offer-circle {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 250px;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.offer-circle.top {
+    top: 40px;
+    left: 25px;
+    background: linear-gradient(135deg, #FF6B9D, #FF8EAB);
+    color: #fff;
+}
+
+.offer-circle.bottom {
+    bottom: 40px;
+    right: 25px;
+    background: #fff;
+    color: #333;
+}
+
+.offer-circle h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.offer-circle p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+
+.logo-icon {
+    margin-top: 8px;
+}
+
+.logo-icon img {
+    width: 35px !important;
+    height: 35px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    background: #fff !important;
+    padding: 2px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    display: block !important;
+    border: none !important;
+}
+
+.ootsraep {
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    background: #fff !important;
+    padding: 2px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    width: 35px !important;
+    height: 35px !important;
+    display: block !important;
+    border: none !important;
+    clip-path: circle(50% at 50% 50%) !important;
+}
+
+/* Right Side - Content */
+.refer-right {
+    padding: 40px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.refer-right h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1a2332;
+    letter-spacing: 0.5px;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Steps */
+.steps {
+    margin-bottom: 40px;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.step-number {
+    background: #F5E6D3;
+    color: #1a2332;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.step-content p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+    padding-top: 10px;
+}
+
+/* Form Section */
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #1a2332;
+}
+
+.refer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #E8D5B5;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #333;
+    background: #fff;
+    transition: border-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1a2332;
+    box-shadow: 0 0 0 3px rgba(26, 35, 50, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+.submit-btn {
+    background: #1a2332;
+    color: #fff;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: #2d3a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Terms Note */
+.terms-note {
+    background: #F5E6D3;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #1a2332;
+}
+
+.terms-note p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/* Footer */
+footer {
+    background: #E8D5B5;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .refer-hero .container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .refer-right {
+        padding: 30px;
+    }
+    
+    .refer-right h1 {
+        font-size: 2.4rem;
+    }
+    
+    .image-container {
+        height: 500px;
+    }
+    
+    .offer-circle {
+        width: 200px;
+        height: 200px;
+        padding: 25px;
+    }
+    
+    .offer-circle h3 {
+        font-size: 0.9rem;
+    }
+    
+    .offer-circle p {
+        font-size: 0.8rem;
+    }
+    
+    .logo-icon img {
+        width: 30px !important;
+        height: 30px !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+        background: #fff !important;
+        padding: 2px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        display: block !important;
+        border: none !important;
+        clip-path: circle(50% at 50% 50%) !important;
+    }
+    
+    .ootsraep {
+        width: 30px !important;
+        height: 30px !important;
+        clip-path: circle(50% at 50% 50%) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .refer-hero {
+        padding: 60px 0;
+    }
+    
+    .refer-right h1 {
+        font-size: 2rem;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .step-content p {
+        font-size: 0.95rem;
+    }
+    
+    .form-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .submit-btn {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+    
+    .image-container {
+        height: 400px;
+    }
+    
+    .offer-circle {
+        width: 180px;
+        height: 180px;
+        padding: 20px;
+    }
+    
+    .offer-circle.top {
+        top: 30px;
+        left: 20px;
+    }
+    
+    .offer-circle.bottom {
+        bottom: 30px;
+        right: 20px;
+    }
+    
+    .logo-icon img {
+        width: 28px !important;
+        height: 28px !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+        background: #fff !important;
+        padding: 2px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        display: block !important;
+        border: none !important;
+        clip-path: circle(50% at 50% 50%) !important;
+    }
+    
+    .ootsraep {
+        width: 28px !important;
+        height: 28px !important;
+        clip-path: circle(50% at 50% 50%) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .refer-right {
+        padding: 25px 20px;
+    }
+    
+    .refer-right h1 {
+        font-size: 1.8rem;
+    }
+    
+    .step {
+        gap: 15px;
+    }
+    
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .form-group input {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+    
+    .submit-btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+    
+    .image-container {
+        height: 300px;
+    }
+    
+    .offer-circle {
+        width: 150px;
+        height: 150px;
+        padding: 15px;
+    }
+    
+    .offer-circle h3 {
+        font-size: 0.8rem;
+    }
+    
+    .offer-circle p {
+        font-size: 0.7rem;
+    }
+    
+    .logo-icon img {
+        width: 25px !important;
+        height: 25px !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+        background: #fff !important;
+        padding: 2px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        display: block !important;
+        border: none !important;
+        clip-path: circle(50% at 50% 50%) !important;
+    }
+    
+    .ootsraep {
+        width: 25px !important;
+        height: 25px !important;
+        clip-path: circle(50% at 50% 50%) !important;
+    }
+} 

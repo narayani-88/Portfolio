@@ -1,0 +1,27 @@
+@'
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Log files
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+'@ | Out-File -Encoding ASCII .gitignore
