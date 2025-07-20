@@ -79,8 +79,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
             $file_extension = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
             
-            if (!in_array($file_extension, $allowed_types)) {
-                die('Error: Only JPG, JPEG, PNG, GIF, and WebP files are allowed.');
+            // Check both extension and MIME type for better security
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime_type = finfo_file($finfo, $_FILES['image']['tmp_name']);
+            finfo_close($finfo);
+            
+            $allowed_mime_types = [
+                'image/jpeg',
+                'image/png',
+                'image/gif',
+                'image/webp'
+            ];
+            
+            if (!in_array($file_extension, $allowed_types) || !in_array($mime_type, $allowed_mime_types)) {
+                die('Error: Only JPG, JPEG, PNG, GIF, and WebP files are allowed. Detected type: ' . $mime_type);
             }
             
             // Generate unique filename
