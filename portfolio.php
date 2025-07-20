@@ -1,3 +1,30 @@
+<?php 
+// Include configuration file
+require_once __DIR__ . '/admin/includes/config.php';
+
+// Database connection
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get all portfolio items with their categories
+$sql = "SELECT p.*, c.slug as category_slug, c.name as category_name 
+        FROM portfolio p 
+        LEFT JOIN portfolio_categories c ON p.category_id = c.id 
+        ORDER BY p.created_at DESC";
+$result = $conn->query($sql);
+
+// Group items by category for filtering
+$portfolio_items = [];
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $portfolio_items[] = $row;
+    }
+}
+$conn->close();
+?>
+
 <?php include 'navbar.php'; ?>
 
 <!DOCTYPE html>
@@ -312,86 +339,26 @@
             </div>
             
             <div class="project-gallery">
-                <!-- All Projects -->
-                <div class="project-card" data-category="residential">
-                    <img src="images/portfolio/jared-brashier-DoddrXpLw3A-unsplash.jpg" alt="Modern Residential">
-                    <div class="project-overlay">
-                        <h3>Modern Residential</h3>
-                        <p>Contemporary home design with natural light</p>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="commercial">
-                    <img src="images/portfolio/nastuh-abootalebi-eHD8Y1Znfpk-unsplash.jpg" alt="Commercial Space">
-                    <div class="project-overlay">
-                        <h3>Commercial Space</h3>
-                        <p>Dynamic commercial environment design</p>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="kitchen">
-                    <img src="images/portfolio/lotus-design-n-print-_AK42TQRyCw-unsplash.jpg" alt="Luxury Kitchen">
-                    <div class="project-overlay">
-                        <h3>Luxury Kitchen</h3>
-                        <p>High-end kitchen with premium finishes</p>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="office">
-                    <img src="images/portfolio/kara-eads-L7EwHkq1B2s-unsplash.jpg" alt="Modern Office">
-                    <div class="project-overlay">
-                        <h3>Modern Office</h3>
-                        <p>Professional workspace design</p>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="residential">
-                    <img src="images/portfolio/project1.jpg" alt="Living Room">
-                    <div class="project-overlay">
-                        <h3>Elegant Living Room</h3>
-                        <p>Sophisticated living space transformation</p>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="kitchen">
-                    <img src="images/portfolio/project2.jpg" alt="Kitchen Design">
-                    <div class="project-overlay">
-                        <h3>Contemporary Kitchen</h3>
-                        <p>Modern kitchen with sleek design</p>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="residential">
-                    <img src="images/portfolio/project3.jpg" alt="Bedroom">
-                    <div class="project-overlay">
-                        <h3>Master Bedroom</h3>
-                        <p>Luxurious bedroom sanctuary</p>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="commercial">
-                    <img src="images/portfolio/jason-wang-NxAwryAbtIw-unsplash.jpg" alt="Commercial Interior">
-                    <div class="project-overlay">
-                        <h3>Commercial Interior</h3>
-                        <p>Professional business environment</p>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="residential">
-                    <img src="images/portfolio/contact-image.jpg" alt="Dining Area">
-                    <div class="project-overlay">
-                        <h3>Dining Area</h3>
-                        <p>Elegant dining space transformation</p>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="office">
-                    <img src="images/portfolio/priscilla-du-preez-XkKCui44iM0-unsplash.jpg" alt="Office Space">
-                    <div class="project-overlay">
-                        <h3>Creative Office</h3>
-                        <p>Innovative workspace design</p>
-                    </div>
-                </div>
+                <?php if (!empty($portfolio_items)): ?>
+                    <?php foreach ($portfolio_items as $item): 
+                        // Get the first image if multiple images are stored
+                        $images = explode(',', $item['image_path']);
+                        $main_image = !empty($images[0]) ? $images[0] : 'images/portfolio/default.jpg';
+                        $category_slug = !empty($item['category_slug']) ? $item['category_slug'] : 'all';
+                    ?>
+                        <div class="project-card" data-category="<?php echo htmlspecialchars($category_slug); ?>">
+                            <img src="<?php echo htmlspecialchars($main_image); ?>" alt="<?php echo htmlspecialchars($item['title']); ?>">
+                            <div class="project-overlay">
+                                <h3><?php echo htmlspecialchars($item['title']); ?></h3>
+                                <?php if (!empty($item['description'])): ?>
+                                    <p><?php echo htmlspecialchars($item['description']); ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="no-projects">No portfolio items found. Please check back later.</p>
+                <?php endif; ?>
             </div>
             
             <a href="get-a-quote.php" class="btn">Start Your Project</a>
@@ -401,35 +368,30 @@
     <!-- Portfolio Filtering Functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const categoryButtons = document.querySelectorAll('.category-btn');
+            const categoryBtns = document.querySelectorAll('.category-btn');
             const projectCards = document.querySelectorAll('.project-card');
-
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
                     this.classList.add('active');
                     
-                    filterProjects(category);
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide projects based on category
+                    projectCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => { card.style.opacity = '1'; }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            setTimeout(() => { card.style.display = 'none'; }, 300);
+                        }
+                    });
                 });
             });
-
-            function filterProjects(category) {
-                projectCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
-                    
-                    if (category === 'all' || cardCategory === category) {
-                        card.style.display = 'block';
-                        card.style.opacity = '0';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                        }, 50);
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
         });
     </script>
 </body>
